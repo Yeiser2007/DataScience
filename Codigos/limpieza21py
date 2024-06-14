@@ -1,0 +1,36 @@
+import pandas as pd
+
+# Cargar el dataset desde el archivo CSV
+file_path = 'Conjuntos/dataset4.csv'
+df = pd.read_csv(file_path)
+
+# Mostrar las primeras filas para verificar la carga correcta
+print(df.head())
+
+# Eliminar columnas no requeridas
+columnas_eliminar = ["id-mapa", "anio", "mes", "dia", "latitud", "longitud"]
+df = df.drop(columns=columnas_eliminar)
+
+# Mostrar el DataFrame actualizado
+print(df.head())
+
+# Función para clasificar tipo y subtipo de delito (asumiendo una clasificación para Argentina)
+def clasificar_delito(tipo, subtipo):
+    if tipo == "Robo":
+        if subtipo in ["Robo total", "Robo automotor"]:
+            return 1
+        else:
+            return 3
+    elif tipo == "Hurto":
+        return 2
+    else:
+        return 3
+
+# Aplicar la función para clasificar tipo y subtipo de delito
+df['tipo_delito'] = df.apply(lambda x: clasificar_delito(x['tipo'], x['subtipo']), axis=1)
+
+# Mostrar el DataFrame con la nueva columna de clasificación
+print(df.head())
+
+# Guardar el DataFrame clasificado en un nuevo archivo CSV
+df.to_csv('datos_clasificados.csv', index=False)

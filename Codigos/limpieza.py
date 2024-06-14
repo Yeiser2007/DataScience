@@ -1,22 +1,22 @@
-# import pandas as pd
-# from tqdm import tqdm
+import pandas as pd
+from tqdm import tqdm
 
-# # Cargar el archivo CSV
-# df = pd.read_csv('dataset  .csv')
+# Cargar el archivo CSV
+df = pd.read_csv('../Conjuntos/dataset3.csv')
 
-# # Eliminar datos menores a 2019-01-01 en la columna fecha_hecho
-# total_rows = len(df)
-# indices_a_eliminar = []
+# Eliminar datos menores a 2019-01-01 en la columna fecha_hecho
+total_rows = len(df)
+indices_a_eliminar = []
 
-# for index, row in tqdm(df.iterrows(), total=total_rows, desc="Procesando"):
-#     fecha_hecho = pd.to_datetime(row['fecha_hecho'], errors='coerce')
-#     if fecha_hecho < pd.to_datetime('2019-01-01'):
-#         indices_a_eliminar.append(index)
+for index, row in tqdm(df.iterrows(), total=total_rows, desc="Procesando"):
+    fecha_hecho = pd.to_datetime(row['año'], errors='coerce')
+    if fecha_hecho < pd.to_datetime('2024'):
+        indices_a_eliminar.append(index)
 
-# df = df.drop(indices_a_eliminar)
+df = df.drop(indices_a_eliminar)
 
-# # Guardar el DataFrame resultante en un nuevo archivo CSV
-# df.to_csv('nuevo_archivo.csv', index=False)
+# Guardar el DataFrame resultante en un nuevo archivo CSV
+df.to_csv('nuevo_archivo.csv', index=False)
 
 # import pandas as pd
 # from tqdm import tqdm
@@ -341,18 +341,18 @@
 # # Guardar el DataFrame resultante en un nuevo archivo CSV
 # df.to_csv('new_data.csv', index=False)
 
-import pandas as pd
+# import pandas as pd
 
-# Cargar el archivo CSV
-df = pd.read_csv('Limpieza/new_data.csv')
+# # Cargar el archivo CSV
+# df = pd.read_csv('Limpieza/new_data.csv')
 
-# # Definir las categorías
-categorias = {
-    1: (0, 24),
-    2: (24.1, 72),
-    3: (72.1, 168),
-    4: (168.1, float('inf'))  # Utilizamos float('inf') para representar "mayor que 168"
-}
+# # # Definir las categorías
+# categorias = {
+#     1: (0, 24),
+#     2: (24.1, 72),
+#     3: (72.1, 168),
+#     4: (168.1, float('inf'))  # Utilizamos float('inf') para representar "mayor que 168"
+# }
 
 # # Función para clasificar las horas en las categorías definidas
 # def clasificar_horas(horas):
@@ -367,36 +367,36 @@ categorias = {
 # # Guardar el resultado en un nuevo archivo CSV
 # df.to_csv('Datasetcomplete.csv', index=False)
 
-import pandas as pd
+# import pandas as pd
 
-def identificar_nan(dataframe):
-    # Identificar valores NaN en el DataFrame
-    nan_values = dataframe.isnull()
+# def identificar_nan(dataframe):
+#     # Identificar valores NaN en el DataFrame
+#     nan_values = dataframe.isnull()
     
-    # Contar los valores NaN en cada columna
-    count_nan = nan_values.sum()
+#     # Contar los valores NaN en cada columna
+#     count_nan = nan_values.sum()
     
-    # Obtener un resumen de las columnas con valores NaN
-    columns_with_nan = count_nan[count_nan > 0]
+#     # Obtener un resumen de las columnas con valores NaN
+#     columns_with_nan = count_nan[count_nan > 0]
     
-    return nan_values, columns_with_nan
+#     return nan_values, columns_with_nan
 
-if __name__ == "__main__":
-    # Nombre del archivo CSV
-    archivo_csv = "etiquetado.csv"  # Cambia esto al nombre de tu archivo CSV
+# if __name__ == "__main__":
+#     # Nombre del archivo CSV
+#     archivo_csv = "etiquetado.csv"  # Cambia esto al nombre de tu archivo CSV
     
-    # Leer el archivo CSV en un DataFrame de pandas
-    df = pd.read_csv(archivo_csv)
+#     # Leer el archivo CSV en un DataFrame de pandas
+#     df = pd.read_csv(archivo_csv)
     
-    # Identificar y contar los valores NaN
-    valores_nan, columnas_con_nan = identificar_nan(df)
+#     # Identificar y contar los valores NaN
+#     valores_nan, columnas_con_nan = identificar_nan(df)
     
-    # Imprimir los resultados
-    print("Valores NaN identificados:")
-    print(valores_nan)
+#     # Imprimir los resultados
+#     print("Valores NaN identificados:")
+#     print(valores_nan)
     
-    print("\nColumnas con valores NaN:")
-    print(columnas_con_nan)
+#     print("\nColumnas con valores NaN:")
+#     print(columnas_con_nan)
 
 
 # import pandas as pd
