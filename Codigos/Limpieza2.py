@@ -2,7 +2,7 @@ import pandas as pd
 from tqdm import tqdm
 
 # Cargar el archivo CSV especificando 'latin1' como encoding
-df = pd.read_csv('dataset3.csv', encoding='latin1')
+df = pd.read_csv('datasets/dataset3.csv', encoding='latin1')
 
 # # Eliminar datos con año menor a 2019 en la columna 'año'
 # indices_a_eliminar = []
@@ -27,8 +27,8 @@ df = pd.read_csv('dataset3.csv', encoding='latin1')
 # df['Sexo'] = df['Sexo'].map(mapeo_genero).fillna(pd.NA)
 
 # Eliminar columnas específicas
-# columnas_a_eliminar = ['Anio','Rango de edad','Tipo de delito']
-# df = df.drop(columns=columnas_a_eliminar)
+columnas_a_eliminar = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']
+df = df.drop(columns=columnas_a_eliminar)
 
 # # Guardar el DataFrame resultante en un nuevo archivo CSV
 # df.to_csv('nuevo_archivo2.csv', index=False)
@@ -88,14 +88,14 @@ df = pd.read_csv('dataset3.csv', encoding='latin1')
 #                       'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
 
 # # Reordenar las columnas
-# df = df[columnas_ordenadas]
+# # df = df[columnas_ordenadas]
 
-orden_columnas = ['Categoria del delito','Clasificacion de edad', 'Clave_Ent', 'Modalidad', 'Sexo', 'Enero', 'Febrero', 
-                  'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 
-                  'Octubre', 'Noviembre', 'Diciembre' ]
+# orden_columnas = ['Categoria del delito','Clasificacion de edad', 'Clave_Ent', 'Modalidad', 'Sexo', 'Enero', 'Febrero', 
+#                   'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 
+#                   'Octubre', 'Noviembre', 'Diciembre' ]
 
-# Reordenar las columnas
-df = df[orden_columnas]
+# # Reordenar las columnas
+# df = df[orden_columnas]
 
 # Guardar el DataFrame resultante en un nuevo archivo CSV
 df.to_csv('dataset3.csv', index=False)

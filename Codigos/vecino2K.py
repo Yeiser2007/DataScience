@@ -59,7 +59,7 @@ def exactitud(datos_prueba, predicciones):
 def main():
     # Cargar datos
     print("Cargando datos...")
-    datos_entrenamiento, datos_prueba, encabezado = cargar_datos('Procesamiento/dataset.csv', 0.80)
+    datos_entrenamiento, datos_prueba, encabezado = cargar_datos('Conjuntos/dataset1.csv', 0.80)
     print('Cantidad de datos de entrenamiento:', len(datos_entrenamiento))
     print('Cantidad de datos de prueba:', len(datos_prueba))
     predicciones = []
